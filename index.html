@@ -571,7 +571,20 @@
       }
     };
 
-    // Send to GoHighLevel webhook
+    // Send to our own Title Transfers desk (PRIMARY — leads flow into the back end / title_jobs)
+    fetch('https://title-transfers-near-me.vercel.app/api/lead', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        first_name: leadData.firstName, last_name: leadData.lastName, email: leadData.email, phone: leadData.phone,
+        address: leadData.address1, city: leadData.city, state: leadData.state, zip: leadData.postalCode,
+        service_type: document.getElementById('service_type').value,
+        message: document.getElementById('message').value.trim(),
+        vin: (document.getElementById('vin') ? document.getElementById('vin').value.trim() : ''),
+        source: 'website'
+      })
+    }).catch(function(err){ console.log('desk lead error:', err); });
+
+    // Send to GoHighLevel webhook (parallel backup during the switch)
     if (GHL_WEBHOOK_URL && GHL_WEBHOOK_URL !== 'YOUR_GHL_WEBHOOK_URL_HERE') {
       fetch(GHL_WEBHOOK_URL, {
         method: 'POST',
