@@ -1,0 +1,16 @@
+.tags-video[hidden]{display:none!important}.tags-video{padding:70px 24px;background:#f4f7fb}.tags-video-inner{max-width:1152px;margin:auto;display:grid;grid-template-columns:.75fr 1.25fr;gap:48px;align-items:center}.tags-video-kicker{font-weight:800;font-size:12px;letter-spacing:.12em;color:#1b4d8e}.tags-video h2{font-size:40px;color:#0a2240;margin:12px 0 16px;line-height:1.15}.tags-video p{line-height:1.6;margin-bottom:22px}.tags-video video{display:block;width:100%;aspect-ratio:16/9;background:#0a2240;border-radius:16px;box-shadow:0 12px 40px #0a224024}.tags-video details{margin-top:16px}.tags-video summary{cursor:pointer;font-weight:600}.tags-video a:focus-visible,.tags-video summary:focus-visible{outline:3px solid #1b4d8e;outline-offset:4px}@media(max-width:700px){.tags-video{padding:44px 20px}.tags-video-inner{grid-template-columns:1fr;gap:24px}.tags-video h2{font-size:32px}}
+
+/* Apply after the existing tags-video.css; preserves the entire portrait frame. */
+.tags-video video {
+  width: min(100%, 378px);
+  height: auto;
+  aspect-ratio: 472 / 848;
+  object-fit: contain;
+  margin-inline: auto;
+}
+.tags-video-sound { margin-top: 14px; text-align: center; }
+.tags-video-sound[hidden] { display: none !important; }
+.tags-video-sound p { margin-bottom: 10px; }
+@media (max-width: 700px) {
+  .tags-video video { width: min(100%, 340px); }
+}
